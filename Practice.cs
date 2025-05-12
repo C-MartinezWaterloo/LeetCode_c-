@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
 
 class Program
 {
@@ -53,6 +56,39 @@ class Palindrome_number
         return isPalindrome;
     }
 }
+
+
+
+class longest_common_prefix
+{
+    public string prefix(string[] strs)
+    {
+        if (strs == null || strs.Length == 0)
+            return "";
+
+        int i = 1;
+
+        while (true)
+        {
+            if (i > strs[0].Length)
+                return strs[0];  // Whole first string is common
+
+            string temp = strs[0].Substring(0, i);
+
+            for (int j = 1; j < strs.Length; j++)
+            {
+                if (strs[j].Length < i || strs[j].Substring(0, i) != temp)
+                {
+                    return strs[0].Substring(0, i - 1);
+                }
+            }
+
+            i++;
+        }
+    }
+}
+
+
 
 
 
